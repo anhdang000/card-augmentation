@@ -90,7 +90,7 @@ for i, (image_file, label_file, file_id) in tqdm(
     
     # Convert to RGB
     merged_image.load()
-    merged_image_rgb = Image.new("RGB", merged_image.size, (2555, 255, 255))
+    merged_image_rgb = Image.new("RGB", merged_image.size, (255, 255, 255))
     merged_image_rgb.paste(merged_image, mask=merged_image.split()[3])
     merged_image_rgb.save(join(OUTPUT_IMAGE_DIR, file_id + '_thumb.jpg'), 'JPEG', quality=80)
 
