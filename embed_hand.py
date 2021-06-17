@@ -64,8 +64,12 @@ for i, (image_file, label_file, file_id) in tqdm(
     # Resize hand template
     scale = int(obj_w/orig_hand_w)
     new_size = (orig_hand_w*scale, orig_hand_h*scale)
-    hand_aug = hand.resize(new_size)
-    hand_mask_aug = hand_mask.resize(new_size)
+    try:
+        hand_aug = hand.resize(new_size)
+        hand_mask_aug = hand_mask.resize(new_size)
+    except:
+        print(f'Ignored {file_id}!')
+        continue
 
     # Random change hand template brightness
     factor = random.uniform(0.2, 3)
