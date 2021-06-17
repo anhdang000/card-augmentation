@@ -100,8 +100,8 @@ for i, (image_file, label_file, file_id) in tqdm(enumerate(zip(IMAGE_FILES, LABE
     result.load()
     result_rgb = Image.new("RGB", result.size, (255, 255, 255))
     result_rgb.paste(result, mask=result.split()[3])
-    result_rgb.save('ret.jpg', "JPEG", quality=80)
+    result_rgb.save(join(OUTPUT_IMAGE_DIR, file_id + '_merge.jpg'), "JPEG", quality=80)
 
     result_mask_p = result_mask.convert('P')
-    result_mask_p.save('ret1.png', "PNG")
+    result_mask_p.save(join(OUTPUT_LABEL_DIR, file_id + '_merge.png'), "PNG")
 
